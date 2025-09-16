@@ -28,7 +28,7 @@ jobs:
           # Replace @your-scope/package-name with your actual package
           mkdir -p ./deployed-package
           cd ./deployed-package
-          npm pack @your-scope/package-name@latest
+          npm pack /openmrs@latest
           tar -xzf *.tgz --strip-components=1
 
       - name: 🔑 Setup SSH key
