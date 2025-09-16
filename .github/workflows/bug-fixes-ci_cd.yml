@@ -26,8 +26,7 @@ jobs:
             cd /var/www/app
 
             echo "📥 Pulling latest code..."
-            git fetch --all
-            git reset --hard origin/main
+            git clone https://github.com/KenMusembi/openmrs-esm-core.git            
 
             echo "📦 Installing dependencies..."
             yarn install --immutable
