@@ -37,11 +37,9 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: 🚀 Deploy package to server
-        uses: appleboy/ssh-action@v0.1.9
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          host: 0f319178341c.mylabserver.com
-          username: cloud_user
-          port: 22
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "deployed-package/**"
           target: "/var/www/app"
           rm: true
