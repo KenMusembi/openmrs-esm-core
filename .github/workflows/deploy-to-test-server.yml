@@ -24,7 +24,7 @@ jobs:
           scp -o StrictHostKeyChecking=no e2e/support/github/run-e2e-docker-env.sh cloud_user@0f319178341c.mylabserver.com:/home/cloud_user/run-e2e-docker-env.sh
           scp -o StrictHostKeyChecking=no e2e/support/github/Dockerfile cloud_user@0f319178341c.mylabserver.com:/home/cloud_user/Dockerfile
           scp -o StrictHostKeyChecking=no e2e/support/github/commit_and_export_images.sh cloud_user@0f319178341c.mylabserver.com:/home/cloud_user/commit_and_export_images.sh
-          scp -o StrictHostKeyChecking=no packages cloud_user@0f319178341c.mylabserver.com:/home/cloud_user/packages
+          scp -o StrictHostKeyChecking=no -r packages cloud_user@0f319178341c.mylabserver.com:/home/cloud_user/packages
 
       - name: Deploy with Docker Compose
         run: |
