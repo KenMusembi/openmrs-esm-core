@@ -21,7 +21,7 @@ jobs:
           
       - name: 🚀 Git pull and run app on server
         run: |
-          ssh cloud_user@0f319178341c.mylabserver.com << 'EOF'
+          ssh -o StrictHostKeyChecking=no cloud_user@0f319178341c.mylabserver.com << 'EOF'
             set -e
             cd /var/www/app
 
@@ -33,5 +33,5 @@ jobs:
             yarn install --immutable
 
             echo "🚀 Running app..."
-            yarn turbo run build &
+            yarn turbo run build 
           EOF
