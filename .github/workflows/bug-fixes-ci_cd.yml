@@ -12,32 +12,25 @@ jobs:
 
     steps:
       - name: ✅ Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 🛠️ Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          registry-url: "https://registry.npmjs.org"
-          node-version: 20
-
-      - name: 🔐 Configure NPM auth
-        run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}
-
-      - name: 📦 Install package from NPM
-        run: |
-          # Replace @your-scope/package-name with your actual package
-          mkdir -p ./deployed-package
-          cd ./deployed-package
-          npm pack openmrs
-          tar -xzf *.tgz --strip-components=1
+        uses: actions/checkout@v4    
 
       - name: 🔑 Setup SSH key
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: 🚀 Deploy package to server
+          
+      - name: 🚀 Git pull and run app on server
         run: |
-          # Copy files to the remote server
-          rsync -avz --delete ./deployed-package/ cloud_user@0f319178341c.mylabserver.com:/var/www/app/
-          sudo yarn install --immutable && yarn turbo run build
+          ssh cloud_user@0f319178341c.mylabserver.com << 'EOF'
+            set -e
+            cd /var/www/app
+
+            echo "📥 Pulling latest code..."
+            git fetch --all
+            git reset --hard origin/main
+
+            echo "📦 Installing dependencies..."
+            yarn install --immutable
+
+            echo "🚀 Running app..."
+            yarn turbo run build
