@@ -3,7 +3,7 @@ name: Deploy to Remote Test Server
 on:
   push:
     branches:
-      - master   # triggers only when merging into master
+      - main   # triggers only when merging into master
 
 jobs:
   deploy:
