@@ -1,4 +1,4 @@
-name: OpenMRS CICD
+name: BugFixes CICD
 
 on:
   workflow_dispatch: # temporary, for debugging
