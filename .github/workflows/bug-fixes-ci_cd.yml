@@ -34,4 +34,4 @@ jobs:
 
             echo "🚀 Running app..."
             yarn turbo run build &
-            EOF
+          EOF
