@@ -27,7 +27,8 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no cloud_user@0f319178341c.mylabserver.com << 'EOF'
             cd /home/cloud_user
-            run-e2e-docker-env.sh
+            chmod +x run-e2e-docker-env.sh
+            ./run-e2e-docker-env.sh
             docker compose -f docker-compose.yml pull
             docker compose -f docker-compose.yml up -d --remove-orphans
           EOF
