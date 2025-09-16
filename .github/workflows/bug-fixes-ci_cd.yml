@@ -33,4 +33,5 @@ jobs:
             yarn install --immutable
 
             echo "🚀 Running app..."
-            yarn turbo run build
+            yarn turbo run build &
+            EOF
