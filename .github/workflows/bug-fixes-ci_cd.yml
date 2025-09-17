@@ -24,7 +24,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no cloud_user@0f319178341c.mylabserver.com << 'EOF'
             set -e            
             echo "📥 Pulling latest code..."
-            mkdir ~/apps
+            mkdir -p /home/${USER}/apps
             cd ~/apps  # create this once, owned by deploy_user
             if [ ! -d "openmrs-esm-core" ]; then
             git clone https://github.com/KenMusembi/openmrs-esm-core.git
