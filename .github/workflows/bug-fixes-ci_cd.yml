@@ -38,4 +38,7 @@ jobs:
 
             echo "🚀 Running app..."
             yarn turbo run build 
+
+            chmod +x e2e/support/github/run-e2e-docker-env.sh
+            bash e2e/support/github/run-e2e-docker-env.sh
           EOF
